@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Opening PhpStorm..."
+open -na "PhpStorm.app" --args "$@"
