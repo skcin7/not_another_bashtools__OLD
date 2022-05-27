@@ -164,7 +164,7 @@ function nginxhelpers__executecommand__editsite() {
 }
 
 function nginxhelpers__executecommand__sites() {
-    local COMMAND_RETURN_CODE=0
+    local FUNCTION_RETURN_CODE=0
 
 #    echo "Sites List:"
     divider "Sites"
@@ -184,8 +184,8 @@ function nginxhelpers__executecommand__sites() {
     echo ""
     # TODO : Get rid of a separate list for enabled and combine with the all sites list.
 
-    NGINXHELPERS__RETURN_CODE=${COMMAND_RETURN_CODE}
-    return ${COMMAND_RETURN_CODE};
+    NGINXHELPERS__RETURN_CODE=${FUNCTION_RETURN_CODE}
+    return ${FUNCTION_RETURN_CODE};
 }
 
 function nginxhelpers__executecommand__reload() {

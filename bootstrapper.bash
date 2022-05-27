@@ -4,21 +4,20 @@
 # Copyright 2022 Nick Morgan
 
 BASHPROFILE__DEBUGMODE=1
-BASHPROFILE__VERBOSE=1
+NOT_ANOTHER_BASHTOOLS__VERBOSE=1
 BASHPROFILE__SOURCES=(
-    ~/bash/functions.bash
-    ~/bash/shellhelpers.bash
-#    ~/bash/nginxhelpers.bash
-    ~/bash/phphelpers.bash
-#    ~/bash/shellsandbox.bash
-#    ~/bash/shellsandbox_testutility.bash
-    ~/bash/colors.bash
-    ~/bash/getopt.bash
-    $HOME/bash/parse_git_branch.bash
+    ~/not_another_bashtools/functions.bash
+    ~/not_another_bashtools/shellhelpers.bash
+#    ~/not_another_bashtools/nginxhelpers.bash
+    ~/not_another_bashtools/phphelpers.bash
+#    ~/not_another_bashtools/shellsandbox.bash
+#    ~/not_another_bashtools/shellsandbox_testutility.bash
+    ~/not_another_bashtools/colors.bash
+    ~/not_another_bashtools/getopt.bash
+    $HOME/not_another_bashtools/parse_git_branch.bash
 )
-BASHPROFILE__BIN_DIRECTORY=$HOME/bash/bin
-BASHPROFILE__SH_DIRECTORY=$HOME/bash/sh
-BASHPROFILE__AUTOENABLED=1
+NOT_ANOTHER_BASHTOOLS__AUTOENABLED=1
+NOT_ANOTHER_BASHTOOLS__RETURN_CODE=0
 
 
 
@@ -52,7 +51,7 @@ BASHPROFILE__AUTOENABLED=1
 
 # Print a message (only if verbose mode is on)
 bash__verbosem() {
-    if [ $BASHPROFILE__VERBOSE -eq 1 ]; then
+    if [ $NOT_ANOTHER_BASHTOOLS__VERBOSE -eq 1 ]; then
         echo "$1";
     fi
 }
@@ -71,8 +70,13 @@ bash__load_alias() {
 
 
 # Execute the Bash bootstrapper.
-bash__execute_bootstrapper() {
-    bash__verbosem "Bootstrapping Bash..."
+not_another_bashtools__bootstrap() {
+    local FUNCTION_RETURN_CODE=0
+
+    bash__verbosem "Bootstrapping Yet Another BashTools..."
+
+    export PATH=$PATH:"${NOT_ANOTHER_BASHTOOLS_DIRECTORY}/bin"
+    export PATH=$PATH:"${NOT_ANOTHER_BASHTOOLS_DIRECTORY}/sh"
 
     #
     # Aliases:
@@ -114,31 +118,34 @@ bash__execute_bootstrapper() {
     bash__verbosem "Bash Utilities:"
     for t in ${BASHPROFILE__UTILITIES[@]}; do
         bash__verbosem $t;
-        bash__load_source "$HOME/bash/utilities/$t"
+        bash__load_source "$HOME/not_another_bashtools/utilities/$t"
     done
     bash__verbosem ""
 
 
 
-    bash__verbosem "Directories:"
-    export PATH=$PATH:$BASHPROFILE__BIN_DIRECTORY
-    bash__verbosem "bin: $BASHPROFILE__BIN_DIRECTORY"
-    export PATH=$PATH:$BASHPROFILE__SH_DIRECTORY
-    bash__verbosem "sh: $BASHPROFILE__SH_DIRECTORY"
-    bash__verbosem ""
+
 
 
     # Export variables that may be checked in other Bash sources.
-    export BASHPROFILE__DEBUGMODE=$BASHPROFILE__DEBUGMODE
-    export BASHPROFILE__VERBOSE=$BASHPROFILE__VERBOSE
+#    export BASHPROFILE__DEBUGMODE=$BASHPROFILE__DEBUGMODE
+    export NOT_ANOTHER_BASHTOOLS__VERBOSE=$NOT_ANOTHER_BASHTOOLS__VERBOSE
 
 
-    bash__verbosem "Bash Bootstrapped."
+    bash__verbosem "Yet Another BashTools Bootstrapped."
+
+    NOT_ANOTHER_BASHTOOLS__RETURN_CODE=${FUNCTION_RETURN_CODE}
+    return ${FUNCTION_RETURN_CODE};
 }
-alias bootstrap="bash__execute_bootstrapper"
+#alias bootstrap="not_another_bashtools__bootstrap"
+alias bashtools__bootstrap="not_another_bashtools__bootstrap"
+#alias bash_bootstrap="bashtools__bootstrap"
 
 
 # Automatically run the bootstrapper if auto-enabled, otherwise, it must be enabled with the 'bootstrap' command.
-if [ $BASHPROFILE__AUTOENABLED -eq 1 ]; then
-    bootstrap
+if [ $NOT_ANOTHER_BASHTOOLS__AUTOENABLED -eq 1 ]; then
+    res=$(not_another_bashtools__bootstrap)
+    echo $?
+
+    not_another_bashtools__bootstrap
 fi
