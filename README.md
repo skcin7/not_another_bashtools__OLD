@@ -1,8 +1,8 @@
 # Not Another BashTools!
 
-## Usage
+## How To Use
 
-Add the following code to your `.bash_profile` or `.bashrc`:
+You can use `nabt` by adding the following code to your `.bash_profile` or `.bashrc`:
 
 ```shell
 #source $HOME/not_another_bashtools/bootstrapper.bash
