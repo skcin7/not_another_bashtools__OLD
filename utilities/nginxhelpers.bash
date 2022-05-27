@@ -34,37 +34,31 @@ NGINXHELPERS__DEBUGMODE=0 # 1 or 0. Run in debug mode.
 NGINXHELPERS__DIRECTORY="/opt/homebrew/etc/nginx";
 
 
-declare -A NGINXHELPERS__COMMANDS
-NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="usage [ -c COMMAND ]";
-NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="addsite [ -n NAME ] [ -u --usage ]";
-NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="enablesite [ -n NAME ] [ -u --usage ]";
-NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="disablesite [ -n NAME ] [ -u --usage ]";
-NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="sites";
-NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="quit";
-NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="about";
-NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="help";
+#declare -A NGINXHELPERS__COMMANDS
+#NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="usage [ -c COMMAND ]";
+#NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="addsite [ -n NAME ] [ -u --usage ]";
+#NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="enablesite [ -n NAME ] [ -u --usage ]";
+#NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="disablesite [ -n NAME ] [ -u --usage ]";
+#NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="sites";
+#NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="quit";
+#NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="about";
+#NGINXHELPERS__COMMANDS[${#NGINXHELPERS__COMMANDS[@]}]="help";
 
-#NGINXHELPERS__COMMANDS=(
-##        "help [ -c COMMAND ]"
-#        "help"
-#        "addsite"
-#        "addssl"
-#        "editsite"
-#        "reload"
-#        "restart"
-#        "servers"
-#        "d"
-#        "cd"
-#        "list"
-#        "usage2 [ -c COMMAND ]"
-#        "usage3 usage3input"
-#        "usage"
-#
-#
-#        "removesite"
-#        "removessl"
-#        "testcommand"
-#        )
+NGINXHELPERS__COMMANDS=(
+        "help"
+        "addsite"
+        "addssl"
+        "editsite"
+        "reload"
+        "restart"
+        "servers"
+        "d"
+        "cd"
+        "list"
+        "usage"
+        "removesite"
+        "removessl"
+        )
 
 
 #declare -A NGINXHELPERS__COMMANDS=(
