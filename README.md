@@ -11,8 +11,8 @@ cd ~ && mkdir -p not_another_bashtools && curl -L https://github.com/skcin7/not_
 Now, add the following code to your `.bash_profile` or `.bashrc`:
 
 ```shell
-export NABT__PATH="$HOME/not_another_bashtools"
-source "${NABT__PATH}/nabt.bootstrapper.bash"
+export NABT_PATH="$HOME/not_another_bashtools"
+source "${NABT_PATH}/nabt.bootstrapper.bash"
 ```
 
 ## Contributing
